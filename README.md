@@ -20,16 +20,16 @@ CLI override support and Docker deployment.
 ```mermaid
 flowchart TD
     CLI[CLI / config.yaml] --> Main[main.py]
-    Main --> Config[CrawlerConfig\nconfig.py]
-    Config --> Crawler[Crawler\ncore.py]
-    Crawler --> State[CrawlState\nstate.py]
-    Crawler --> Filter[UrlFilter\nfilters.py]
-    Crawler --> Fetcher[PageFetcher\nfetcher.py]
-    Crawler --> Exporter[MarkdownExporter\nexporter.py]
-    Fetcher --> Browser[Playwright Chromium\nasync API]
+    Main --> Config[CrawlerConfig<br/>config.py]
+    Config --> Crawler[Crawler<br/>core.py]
+    Crawler --> State[CrawlState<br/>state.py]
+    Crawler --> Filter[UrlFilter<br/>filters.py]
+    Crawler --> Fetcher[PageFetcher<br/>fetcher.py]
+    Crawler --> Exporter[MarkdownExporter<br/>exporter.py]
+    Fetcher --> Browser[Playwright Chromium<br/>async API]
     State --> StateFile[crawler_state.json]
     Exporter --> Pages[output/pages/*.md]
-    Filter --> Robots[robots.txt\nurllib.robotparser]
+    Filter --> Robots[robots.txt<br/>urllib.robotparser]
 ```
 
 ## Data Flow
