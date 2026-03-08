@@ -1,9 +1,30 @@
 # Site Crawler
 
-An async BFS web crawler that archives website pages as Markdown files.
+An async BFS website crawler framework built with Playwright.
 
-Built with Python `asyncio` and Playwright. Configurable via YAML, with full
-CLI override support and Docker deployment.
+This project demonstrates how to design a modular crawling system capable of:
+
+- rendering modern websites with Playwright
+- extracting page content and links
+- exporting Markdown snapshots
+- enforcing URL filtering and robots.txt rules
+- persisting crawler state for resumable crawling
+
+The crawler is designed as a **reusable framework** rather than a site-specific scraper, with configuration provided via `config.yaml` and CLI overrides.
+
+## Why This Project
+
+Many simple crawlers rely on `requests + BeautifulSoup`, which works well for static websites but struggles with modern JavaScript-rendered pages.
+
+This project explores a different design:
+
+- **Playwright rendering** for dynamic content
+- **BFS traversal** for predictable crawl coverage
+- **resumable state** so long crawls can recover after interruption
+- **modular architecture** to separate fetching, filtering, exporting, and state management
+- **configuration-driven crawling** via YAML and CLI
+
+The goal is not to compete with large frameworks like Scrapy, but to demonstrate how a crawler system can be structured from first principles.
 
 ## Features
 
@@ -16,6 +37,15 @@ CLI override support and Docker deployment.
 - Docker ready
 
 ## Architecture
+The crawler is designed as a modular pipeline:
+
+- CLI / config.yaml provides runtime configuration
+- main.py initializes the crawler and loads state
+- CrawlerCore coordinates crawling logic
+- PageFetcher uses Playwright for rendering
+- UrlFilter enforces domain, language, and robots rules
+- CrawlState persists queue progress for resumable crawling
+- MarkdownExporter saves processed content
 
 ```mermaid
 flowchart TD
