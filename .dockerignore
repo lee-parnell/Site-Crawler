@@ -1,0 +1,24 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Pytest
+.pytest_cache/
+
+# Crawler outputs (mounted as volumes at runtime)
+output/
+crawler_state.json
+crawler.log
+
+# Dev / OS
+.env
+.env.*
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore

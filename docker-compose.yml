@@ -1,0 +1,7 @@
+services:
+  crawler:
+    build: .
+    volumes:
+      - ./output:/app/output
+      - ./config.yaml:/app/config.yaml
+    command: ["--config", "config.yaml"]

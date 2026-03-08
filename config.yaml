@@ -1,0 +1,49 @@
+crawler:
+  start_url: "https://example.com"
+  allowed_domain: "example.com"
+  max_pages: null             # null = crawl entire site
+
+delays:
+  min: 1.0                    # seconds
+  max: 3.0
+
+retry:
+  max_retries: 3
+  backoff: 15.0               # base seconds (doubles on each retry)
+
+filters:
+  respect_robots: true
+  exclude_extensions:
+    - .jpg
+    - .jpeg
+    - .png
+    - .gif
+    - .webp
+    - .svg
+    - .pdf
+    - .doc
+    - .docx
+    - .xls
+    - .xlsx
+    - .zip
+    - .rar
+    - .css
+    - .js
+    - .json
+    - .mp4
+    - .mp3
+    - .avi
+    - .mov
+  # Regex patterns — any match blocks the URL
+  exclude_patterns: []
+  # Regex whitelist — if non-empty, URL must match at least one pattern
+  include_patterns: []
+
+output:
+  dir: "output/pages"
+
+browser:
+  headless: true
+
+state_file: "crawler_state.json"
+log_file: "crawler.log"
